@@ -6,14 +6,19 @@ export default {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Home: {
             screens: {
-              TabOneScreen: 'one',
+              HomeScreen: '/',
             },
           },
-          TabTwo: {
+          FindAPod: {
             screens: {
-              TabTwoScreen: 'two',
+              FindAPodScreen: 'find',
+            },
+          },
+          QRCode: {
+            screens: {
+              QRCodeScreen: 'open',
             },
           },
         },

@@ -5,9 +5,10 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import HomeScreen from '../screens/HomeScreen';
+import FindAPodScreen from '../screens/FindAPodScreen';
+import QRCodeScreen from '../screens/QRCodeScreen';
+import { BottomTabParamList, HomeParamList, FindAPodParamList, QRCodeParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -16,18 +17,25 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Home"
+        component={HomeNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Find A Pod"
+        component={FindAPodNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="QR Code Test"
+        component={QRCodeNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -44,30 +52,45 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const HomeStack = createStackNavigator<HomeParamList>();
 
-function TabOneNavigator() {
+function HomeNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="Home Screen"
+        component={HomeScreen}
+        options={{ headerTitle: 'Pampa Pods' }}
       />
-    </TabOneStack.Navigator>
+    </HomeStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const FindAPodStack = createStackNavigator<FindAPodParamList>();
 
-function TabTwoNavigator() {
+function FindAPodNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <FindAPodStack.Navigator>
+      <FindAPodStack.Screen
+        name="Find A Pod Screen"
+        component={FindAPodScreen}
+        options={{ headerTitle: 'Pampa Pods' }}
       />
-    </TabTwoStack.Navigator>
+    </FindAPodStack.Navigator>
+  );
+}
+
+
+const QRCodeStack = createStackNavigator<QRCodeParamList>();
+
+function QRCodeNavigator() {
+  return (
+    <QRCodeStack.Navigator>
+      <QRCodeStack.Screen
+        name="QR Code"
+        component={QRCodeScreen}
+        options={{ headerTitle: 'Pampa Pods' }}
+      />
+    </QRCodeStack.Navigator>
   );
 }
