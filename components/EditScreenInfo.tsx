@@ -6,16 +6,18 @@ import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
-export default function EditScreenInfo({ path, title, subtitle }: { path: string, title: string, subtitle: string }) {
+export default function EditScreenInfo({ path, title, subtitle }: { path: string, title?: string, subtitle: string }) {
   return (
     <View>
       <View style={styles.getStartedContainer}>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          {title}
-        </Text>
+        { title && 
+            <Text
+            style={styles.getStartedText}
+            lightColor="rgba(0,0,0,0.8)"
+            darkColor="rgba(255,255,255,0.8)">
+            {title}
+            </Text>
+        }
 
         {/* <View
           style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
@@ -32,13 +34,13 @@ export default function EditScreenInfo({ path, title, subtitle }: { path: string
         </Text>
       </View>
 
-      <View style={styles.helpContainer}>
+      {/* <View style={styles.helpContainer}>
         <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
             Tap here if your app doesn't automatically update after making changes
           </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }
