@@ -2,13 +2,13 @@ import * as React from 'react';
 import { StyleSheet, Dimensions, Button } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-// import { GOOGLE_API_KEY } from "react-native-dotenv";
-
+import Config from 'react-native-config';
 import { Text, View } from '../components/Themed';
 import { mapData } from '../mapData';
+import Environment from '../Environment';
 
 export default function FindAPodScreen() {
-    const _map = React.useRef(null);
+    let searchText: any;
     const latitudeDeltaInitial = 0.25;
     const longitudeDeltaInitial = 0.25;
     const [region, setRegion] = React.useState({
@@ -17,8 +17,6 @@ export default function FindAPodScreen() {
         latitude: 54.5977151700977,
         longitude: -5.9299603236191
     });
-
-    let searchText: any;
 
     return (
         <View>
@@ -36,6 +34,7 @@ export default function FindAPodScreen() {
                 })
                 }
             </MapView>
+
             <View style={{ position: 'absolute', top: 0, width: '100%' }}>
                 <GooglePlacesAutocomplete
                     ref={(c) => (searchText = c)}
@@ -56,7 +55,6 @@ export default function FindAPodScreen() {
                     }}
                     onPress={(data, details = null) => {
                         // 'details' is provided when fetchDetails = true
-                        // searchText.setAddressText(details?.formatted_address);
 
                         setRegion(prevState => ({ 
                             ...prevState,
@@ -65,7 +63,7 @@ export default function FindAPodScreen() {
                         }))
                     }}
                     query={{
-                        key: 'AIzaSyAykd9G34qFbb7rMR0rrhJ_bd-PbNh31PY',
+                        key: Environment.GOOGLE_API_KEY,                        
                         language: 'en',
                         components: 'country:uk',
                     }}
