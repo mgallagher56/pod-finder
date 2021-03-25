@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Dimensions, Button } from 'react-native';
+import { Platform, StyleSheet, Dimensions, Button, Linking } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Config from 'react-native-config';
@@ -30,6 +30,10 @@ export default function FindAPodScreen() {
                         coordinate={{ latitude: data.latitude, longitude: data.longitude }}
                         image={require('../assets/images/logo-map-icon.png')}
                         key={data.title}
+                        onCalloutPress= { () => Platform.OS === 'ios' ? 
+                            Linking.openURL('http://maps.apple.com/?q=' + data.title + '&ddar=' + data.address) : 
+                            Linking.openURL('https://www.google.com/maps/search/?api=1&query=' + escape(data.address))  
+                        }
                     />
                 })
                 }
