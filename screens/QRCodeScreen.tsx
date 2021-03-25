@@ -10,8 +10,12 @@ export default function QRCodeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>QR Code</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/QRCodeScreen.tsx" title="Qr Code" subtitle="Use this QR code to access your pod" />
-      <QRCode value="A special app for Nicole" />
+      <EditScreenInfo path="/screens/QRCodeScreen.tsx" subtitle="Scan this QR code to open your pod" />
+      <View style={{
+          margin: 50,
+      }}>
+        <QRCode size={200} value="Open sesame" />
+      </View>
     </View>
   );
 }

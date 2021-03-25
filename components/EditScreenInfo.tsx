@@ -6,7 +6,7 @@ import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
-export default function EditScreenInfo({ path, title, subtitle }: { path: string, title?: string, subtitle: string }) {
+export default function EditScreenInfo({ path, title, subtitle }: { path?: string, title?: string, subtitle: string }) {
   return (
     <View>
       <View style={styles.getStartedContainer}>
