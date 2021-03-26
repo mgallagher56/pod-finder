@@ -8,7 +8,7 @@ import { Text, View } from '../components/Themed';
 export default function QRCodeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>QR Code</Text>
+      <Text style={styles.title}>QR Code </Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/QRCodeScreen.tsx" subtitle="Scan this QR code to open your pod" />
       <View style={{
