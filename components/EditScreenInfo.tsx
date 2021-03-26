@@ -6,9 +6,9 @@ import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
-export default function EditScreenInfo({ path, title, subtitle }: { path?: string, title?: string, subtitle: string }) {
+export default function EditScreenInfo({ title, subtitle }: { title?: string, subtitle: string }) {
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.getStartedContainer}>
         { title && 
             <Text
@@ -31,15 +31,8 @@ export default function EditScreenInfo({ path, title, subtitle }: { path?: strin
   );
 }
 
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet'
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
   },
   developmentModeText: {

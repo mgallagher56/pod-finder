@@ -19,9 +19,9 @@ export default function HomeScreen() {
                     resizeMode: 'contain' 
                 }}
             />
-      <Text style={styles.title}>Home</Text>
+      <Text style={styles.title}>Home </Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo title='Welcome to the Pampa Pods app' subtitle=''></EditScreenInfo>
+      <EditScreenInfo title='Welcome to the Pampa Pod app' subtitle=''></EditScreenInfo>
     </View>
   );
 }

@@ -26,6 +26,7 @@ export default function BottomTabNavigator() {
 
   return (
     <View style={{
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
@@ -66,7 +67,7 @@ export default function BottomTabNavigator() {
             </BottomTab.Navigator>
         </View>
         <KeyboardAvoidingView 
-            behavior='padding'
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={{
                 display: 'flex',
                 position: 'absolute',
@@ -81,8 +82,9 @@ export default function BottomTabNavigator() {
             <Image
                 source = {require('../assets/images/logo.png')}
                 style = {{
-                    width: '70%',
-                    resizeMode: 'contain' 
+                    height: 175,
+                    resizeMode: 'contain',
+                    marginBottom: 50 
                 }}
             />
             <EditScreenInfo title="Pampa Pods" subtitle="Log in to find and open pods" />
