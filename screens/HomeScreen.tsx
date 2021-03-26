@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -12,8 +12,16 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
+        <Image
+                source = {require('../assets/images/logo.png')}
+                style = {{
+                    width: '70%',
+                    resizeMode: 'contain' 
+                }}
+            />
       <Text style={styles.title}>Home</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <EditScreenInfo title='Welcome to the Pampa Pods app' subtitle=''></EditScreenInfo>
     </View>
   );
 }

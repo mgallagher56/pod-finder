@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Button, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import { Button, Image, KeyboardAvoidingView, StyleSheet } from 'react-native';
 import * as React from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
 
@@ -27,7 +27,6 @@ export default function BottomTabNavigator() {
   return (
     <View style={{
         justifyContent: 'center',
-        flexDirection: 'column',
         alignItems: 'center',
         height: '100%',
         width: '100%'
@@ -66,6 +65,7 @@ export default function BottomTabNavigator() {
             </BottomTab.Navigator>
         </View>
         <KeyboardAvoidingView 
+            behavior='padding'
             style={{
                 display: loggedIn ? "none" : "flex",
                 position: 'absolute',
@@ -75,19 +75,25 @@ export default function BottomTabNavigator() {
                 alignItems: 'center',
                 justifyContent: 'center',
             }}
-            behavior='padding'
-            >
+        >
+            <Image
+                source = {require('../assets/images/logo.png')}
+                style = {{
+                    width: '70%',
+                    resizeMode: 'contain' 
+                }}
+            />
             <EditScreenInfo title="Pampa Pods" subtitle="Log in to find and open pods" />
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
             <TextInput
             style={styles.input}
-
             placeholder='Username'
             onChangeText={ (username) => {
                 setUsername(username);                
                 }}
             defaultValue={username}
             />
+
             <TextInput
             style={styles.input}
             secureTextEntry = {true}
@@ -97,18 +103,22 @@ export default function BottomTabNavigator() {
                 }}
             defaultValue={password}
             />
+
+            <Text style={{color: 'red'}}>{errorMsg}</Text>
+
             <Button
                 title='Login'
                 onPress={ () => {
                     setUsername(username);
                     setPassword(password);
 
-                    if( username === 'Admin' && password === 'password' ) {
+                    if ( username === 'Admin' && password === 'password' ) {
                         setLogIn(true);
+                    } else {
+                        setErrorMsg('Login failed :(')
                     }
                 }} 
             />
-            <Text>{errorMsg}</Text>
         </KeyboardAvoidingView>
     </View>
   );
