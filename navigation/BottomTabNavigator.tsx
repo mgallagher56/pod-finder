@@ -111,7 +111,7 @@ export default function BottomTabNavigator() {
             <Text style={{color: 'red'}}>{errorMsg}</Text>
 
             <Button
-                title='Login'
+                title='Login '
                 onPress={ () => {
                     setUsername(username);
                     setPassword(password);
