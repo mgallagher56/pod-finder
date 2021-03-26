@@ -32,10 +32,11 @@ export default function BottomTabNavigator() {
         width: '100%'
     }}>
         <View style={{
-            display: loggedIn ? "flex" : "none",
+            display: "flex",
             position: 'absolute',
-            height: '100%',
-            width: '100%',
+            height: loggedIn ? "100%" : 0,
+            width: loggedIn ? "100%" : 0,
+            opacity:loggedIn ? 1 : 0
         }}>
 
             <BottomTab.Navigator
@@ -67,10 +68,11 @@ export default function BottomTabNavigator() {
         <KeyboardAvoidingView 
             behavior='padding'
             style={{
-                display: loggedIn ? "none" : "flex",
+                display: 'flex',
                 position: 'absolute',
-                height: '100%',
-                width: '100%',
+                height: loggedIn ? 0 : '100%',
+                width: loggedIn ? 0 : '100%',
+                opacity:loggedIn ? 0 : 1,
                 bottom: 0,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -89,8 +91,8 @@ export default function BottomTabNavigator() {
             style={styles.input}
             placeholder='Username'
             onChangeText={ (username) => {
-                setUsername(username);                
-                }}
+                setUsername(username);
+            }}
             defaultValue={username}
             />
 
@@ -114,6 +116,7 @@ export default function BottomTabNavigator() {
 
                     if ( username === 'Admin' && password === 'password' ) {
                         setLogIn(true);
+                        setErrorMsg('')
                     } else {
                         setErrorMsg('Login failed :(')
                     }
